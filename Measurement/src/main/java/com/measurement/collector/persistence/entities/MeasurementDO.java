@@ -29,10 +29,14 @@ public class MeasurementDO {
     private Long id;
 
     @Column(nullable = false)
-    @NotNull(message = "license plate can not be null!")
+    @NotNull(message = "C02 can not be null!")
     private Long co2;
 
     @Column(nullable = false)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private ZonedDateTime measuredTime = ZonedDateTime.now();
+    private ZonedDateTime measurementTime = ZonedDateTime.now();
+
+    @Column(nullable = false)
+    @NotNull(message = "The sensor can not be null!")
+    private Long sensorId;
 }

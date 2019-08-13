@@ -2,6 +2,7 @@ package com.measurement.collector;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
+
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,9 +12,9 @@ public class LoggingInterceptor extends HandlerInterceptorAdapter {
 
     private static final Log LOG = LogFactory.getLog(LoggingInterceptor.class);
 
-
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
+            Exception ex) {
         StringBuilder logMessage = new StringBuilder();
         logMessage.append("method: ").append(request.getMethod()).append("\t");
         logMessage.append("uri: ").append(request.getRequestURI()).append("\t");
@@ -26,5 +27,4 @@ public class LoggingInterceptor extends HandlerInterceptorAdapter {
             LoggingInterceptor.LOG.info(logMessage.toString());
         }
     }
-
 }

@@ -3,7 +3,6 @@ package com.measurement.collector;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -25,7 +24,6 @@ import java.util.ArrayList;
  * @author  Ana Esteban Garcia-Navas(<a href="mailto:ramoni.esteban@gmail.com">ramoni</a>)
  */
 @EnableSwagger2
-@ComponentScan({ "com.measurement.collector" })
 @SpringBootApplication
 public class MeasurementCollectorApplication implements WebMvcConfigurer {
 

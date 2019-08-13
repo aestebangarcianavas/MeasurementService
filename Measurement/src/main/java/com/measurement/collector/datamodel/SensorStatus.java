@@ -7,5 +7,5 @@ package com.measurement.collector.datamodel;
  */
 public enum SensorStatus {
 
-    OK, WARN, ALERT;
+    OK, WARN, ALERT
 }
