@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 import javax.validation.constraints.NotNull;
 
 /**
- * Data object that contains all information related to the car.
+ * Data object that contains all information related to the measurement.
  *
  * @author  Ana Esteban Garcia-Navas(<a href="mailto:ramoni.esteban@gmail.com">ramoni</a>)
  */

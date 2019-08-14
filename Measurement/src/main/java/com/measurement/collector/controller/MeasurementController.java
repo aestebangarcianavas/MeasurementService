@@ -23,12 +23,12 @@ import java.util.List;
 import javax.validation.Valid;
 
 /**
- * REST controller to get the information of the measurements and the sensors.
+ * REST controller to get the information of the measurements.
  *
  * @author  Ana Esteban Garcia-Navas(<a href="mailto:ramoni.esteban@gmail.com">ramoni</a>)
  */
 @RestController
-@RequestMapping("v1/sensors")
+@RequestMapping("v1/measurement")
 public class MeasurementController {
 
     private final MeasurementService measurementService;
