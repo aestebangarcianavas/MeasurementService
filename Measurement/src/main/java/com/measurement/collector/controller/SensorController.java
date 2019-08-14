@@ -5,5 +5,4 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("v1/sensor")
-public class SensorController {
-}
+public class SensorController { }
