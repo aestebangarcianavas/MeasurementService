@@ -17,7 +17,7 @@ public class MeasurementMapper {
     public static MeasurementDO createMeasurementDOfromMeasurementDTO(MeasurementDTO measurementDTO) {
         MeasurementDO measurementDO = new MeasurementDO();
         measurementDO.setCo2(measurementDTO.getCo2());
-        measurementDO.setSensorId(measurementDTO.getSensorId());
+        measurementDO.setSensorName(measurementDTO.getSensorName());
         return measurementDO;
     }
 
@@ -25,7 +25,7 @@ public class MeasurementMapper {
         MeasurementDTO measurementDTO = new MeasurementDTO();
         measurementDTO.setId(measurementDO.getId());
         measurementDTO.setCo2(measurementDO.getCo2());
-        measurementDTO.setSensorId(measurementDO.getSensorId());
+        measurementDTO.setSensorName(measurementDO.getSensorName());
         measurementDTO.setMeasurementTime(measurementDO.getMeasurementTime());
         return measurementDTO;
     }

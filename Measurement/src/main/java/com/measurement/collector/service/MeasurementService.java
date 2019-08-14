@@ -1,6 +1,6 @@
 package com.measurement.collector.service;
 
-import com.measurement.collector.exception.ConstraintsViolationException;
+import com.measurement.collector.exception.EntityNotFoundException;
 import com.measurement.collector.persistence.entities.MeasurementDO;
 
 import java.time.ZonedDateTime;
@@ -19,10 +19,8 @@ public interface MeasurementService {
      * @param   measurementDO
      *
      * @return  the measurement data object
-     *
-     * @throws  ConstraintsViolationException
      */
-    MeasurementDO createMeasurement(MeasurementDO measurementDO) throws ConstraintsViolationException;
+    MeasurementDO createMeasurement(MeasurementDO measurementDO);
 
     /**
      * Get the measurement for a given sensor and the time of the measurement.
@@ -31,8 +29,10 @@ public interface MeasurementService {
      * @param   measurementDate
      *
      * @return  the measurement data object
+     *
+     * @throws  EntityNotFoundException
      */
-    MeasurementDO getMeasurement(String sensor, ZonedDateTime measurementDate);
+    MeasurementDO getMeasurement(String sensor, ZonedDateTime measurementDate) throws EntityNotFoundException;
 
     /**
      * Get all the measurements available for the given sensor and up to measurementDate.
@@ -41,6 +41,9 @@ public interface MeasurementService {
      * @param   measurementDate
      *
      * @return  List of measurements
+     *
+     * @throws  EntityNotFoundException
      */
-    List<MeasurementDO> findMeasurementsBySensorFromDate(String sensor, ZonedDateTime measurementDate);
+    List<MeasurementDO> findMeasurementsBySensorFromDate(String sensor, ZonedDateTime measurementDate)
+        throws EntityNotFoundException;
 }

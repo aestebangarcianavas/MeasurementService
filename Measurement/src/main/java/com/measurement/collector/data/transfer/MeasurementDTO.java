@@ -24,5 +24,5 @@ public class MeasurementDTO extends Base {
     @NotNull(message = "The id can not be null!")
     private ZonedDateTime measurementTime;
     @NotNull(message = "The name of the sensor can not be null!")
-    private Long sensorId;
+    private String sensorName;
 }

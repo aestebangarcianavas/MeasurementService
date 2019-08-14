@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+import java.time.ZonedDateTime;
 
 /**
  * Data object that contains the information related to the metrics collected from a sensor.
@@ -15,10 +16,14 @@ import javax.validation.constraints.NotNull;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MetricsDTO {
 
-    @NotNull(message = "The sensor identifier can not be null!")
-    private Long sensorId;
+    @NotNull(message = "The sensor name can not be null!")
+    private String sensorName;
     @NotNull(message = "The maximal value collected within a period of time!")
     private Long maxValue;
     @NotNull(message = "The average value collected within a period of time!")
-    private Long averageValue;
+    private Double averageValue;
+    @NotNull(message = "The start time can not be null!")
+    private ZonedDateTime startTime;
+    @NotNull(message = "The end time can not be null!")
+    private ZonedDateTime endTime;
 }

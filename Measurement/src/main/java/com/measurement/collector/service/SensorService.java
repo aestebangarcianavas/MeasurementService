@@ -2,6 +2,7 @@ package com.measurement.collector.service;
 
 import com.measurement.collector.data.transfer.AlertDTO;
 import com.measurement.collector.data.transfer.MetricsDTO;
+import com.measurement.collector.exception.EntityNotFoundException;
 import com.measurement.collector.persistence.entities.SensorDO;
 
 import java.time.ZonedDateTime;
@@ -16,29 +17,33 @@ public interface SensorService {
     /**
      * Return the current status of the sensor.
      *
-     * @param   sensorId
+     * @param   sensorName
      *
      * @return  the sensor data object
+     *
+     * @throws  EntityNotFoundException
      */
-    SensorDO getSensorStatus(Long sensorId);
+    SensorDO getCurrentSensorStatus(String sensorName) throws EntityNotFoundException;
 
     /**
      * Returns the metrics calculated for the given sensor.
      *
-     * @param   sensorId
+     * @param   sensorName
      *
      * @return  Metrics data transfer object
+     *
+     * @throws  EntityNotFoundException
      */
-    MetricsDTO getSensorMetrics(Long sensorId);
+    MetricsDTO getSensorMetrics(String sensorName) throws EntityNotFoundException;
 
     /**
      * Returns the alerts found for a given period of time.
      *
-     * @param   sensorId
+     * @param   sensorName
      * @param   periodStart
      * @param   periodEnd
      *
      * @return  alert data transfer object
      */
-    AlertDTO getSensorAlerts(Long sensorId, ZonedDateTime periodStart, ZonedDateTime periodEnd);
+    AlertDTO getSensorAlerts(String sensorName, ZonedDateTime periodStart, ZonedDateTime periodEnd);
 }

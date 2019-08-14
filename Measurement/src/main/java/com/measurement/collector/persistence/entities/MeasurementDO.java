@@ -38,5 +38,5 @@ public class MeasurementDO {
 
     @Column(nullable = false)
     @NotNull(message = "The sensor can not be null!")
-    private Long sensorId;
+    private String sensorName;
 }
