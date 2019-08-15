@@ -1,5 +1,7 @@
 package com.measurement.collector.service;
 
+import com.measurement.collector.data.transfer.AlertDTO;
+import com.measurement.collector.data.transfer.MetricsDTO;
 import com.measurement.collector.exception.EntityNotFoundException;
 import com.measurement.collector.persistence.entities.MeasurementDO;
 
@@ -46,4 +48,36 @@ public interface MeasurementService {
      */
     List<MeasurementDO> findMeasurementsBySensorFromDate(String sensor, ZonedDateTime measurementDate)
         throws EntityNotFoundException;
+
+    /**
+     * Get the status and the measurement of the given sensor.
+     *
+     * @param   sensorName
+     *
+     * @return
+     *
+     * @throws  EntityNotFoundException
+     */
+    MeasurementDO getCurrentSensorStatus(String sensorName) throws EntityNotFoundException;
+
+    /**
+     * Calculate the metrics for the given sensor.
+     *
+     * @param   sensorName
+     *
+     * @return  data transfer object with the metrics
+     *
+     * @throws  EntityNotFoundException
+     */
+    MetricsDTO getSensorMetrics(String sensorName) throws EntityNotFoundException;
+
+    /**
+     * Get the alerts measured by the sensors.
+     *
+     * @param   periodStart
+     * @param   periodEnd
+     *
+     * @return
+     */
+    AlertDTO getSensorAlerts(ZonedDateTime periodStart, ZonedDateTime periodEnd);
 }

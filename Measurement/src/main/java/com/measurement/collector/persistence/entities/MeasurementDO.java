@@ -1,16 +1,13 @@
 package com.measurement.collector.persistence.entities;
 
+import com.measurement.collector.datamodel.SensorStatus;
 import lombok.Data;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.ZonedDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
 
@@ -39,4 +36,8 @@ public class MeasurementDO {
     @Column(nullable = false)
     @NotNull(message = "The sensor can not be null!")
     private String sensorName;
+
+    @NotNull(message = "sensor status can not be null!")
+    @Enumerated(EnumType.STRING)
+    private SensorStatus sensorStatus;
 }

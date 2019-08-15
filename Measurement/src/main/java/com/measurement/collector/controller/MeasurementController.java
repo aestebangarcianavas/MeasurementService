@@ -1,6 +1,8 @@
 package com.measurement.collector.controller;
 
+import com.measurement.collector.data.transfer.AlertDTO;
 import com.measurement.collector.data.transfer.MeasurementDTO;
+import com.measurement.collector.data.transfer.MetricsDTO;
 import com.measurement.collector.exception.ConstraintsViolationException;
 import com.measurement.collector.exception.EntityNotFoundException;
 import com.measurement.collector.mapper.MeasurementMapper;
@@ -62,5 +64,24 @@ public class MeasurementController {
             ZonedDateTime date) throws EntityNotFoundException {
         List<MeasurementDO> measurements = measurementService.findMeasurementsBySensorFromDate(sensor, date);
         return MeasurementMapper.createMeasurementDTOListfromMeasurementDOList(measurements);
+    }
+
+    @GetMapping("/status")
+    public MeasurementDTO getCurrentSensorStatus(String sensorName) throws EntityNotFoundException {
+        MeasurementDO measurementDO = measurementService.getCurrentSensorStatus(sensorName);
+        if (measurementDO == null) {
+            throw new EntityNotFoundException("No status found");
+        }
+        return MeasurementMapper.createMeasurementDTOfromMeasurementDO(measurementDO);
+    }
+
+    @GetMapping("/metrics")
+    public MetricsDTO getSensorMetrics(String sensorName) throws EntityNotFoundException {
+        return measurementService.getSensorMetrics(sensorName);
+    }
+
+    @GetMapping("/alerts")
+    public AlertDTO getSensorAlerts(ZonedDateTime periodStart, ZonedDateTime periodEnd) {
+        return measurementService.getSensorAlerts(periodStart, periodEnd);
     }
 }

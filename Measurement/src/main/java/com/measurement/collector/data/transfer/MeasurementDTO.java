@@ -2,6 +2,7 @@ package com.measurement.collector.data.transfer;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import com.measurement.collector.datamodel.SensorStatus;
 import lombok.Data;
 
 import java.time.ZonedDateTime;
@@ -25,4 +26,6 @@ public class MeasurementDTO extends Base {
     private ZonedDateTime measurementTime;
     @NotNull(message = "The name of the sensor can not be null!")
     private String sensorName;
+    @NotNull(message = "The status of the sensor can not be null!")
+    private SensorStatus sensorStatus;
 }

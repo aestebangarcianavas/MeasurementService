@@ -3,7 +3,6 @@ package com.measurement.collector.persistence.repository;
 import com.measurement.collector.datamodel.SensorStatus;
 import com.measurement.collector.persistence.entities.MeasurementDO;
 
-import com.measurement.collector.persistence.entities.SensorDO;
 import org.springframework.data.repository.CrudRepository;
 
 import java.time.ZonedDateTime;
@@ -18,4 +17,6 @@ public interface MeasurementRepository extends CrudRepository<MeasurementDO, Lon
     List<MeasurementDO> findBySensorName(String sensorName);
     MeasurementDO findBySensorNameAndMeasurementTime(String sensorName, ZonedDateTime measurementDate);
     List<MeasurementDO> findAllBySensorNameAndMeasurementTimeAfter(String sensorName, ZonedDateTime measurementDate);
+    MeasurementDO findOneBySensorNameOrderByMeasurementTimeDesc(String sensorName);
+    List<MeasurementDO> findAllBySensorStatusAndMeasurementTimeBetween(SensorStatus sensorStatus, ZonedDateTime startTime, ZonedDateTime endTime);
 }

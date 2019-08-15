@@ -18,6 +18,8 @@ public class MeasurementMapper {
         MeasurementDO measurementDO = new MeasurementDO();
         measurementDO.setCo2(measurementDTO.getCo2());
         measurementDO.setSensorName(measurementDTO.getSensorName());
+        measurementDO.setSensorStatus(measurementDTO.getSensorStatus());
+        measurementDO.setMeasurementTime(measurementDTO.getMeasurementTime());
         return measurementDO;
     }
 
@@ -27,6 +29,7 @@ public class MeasurementMapper {
         measurementDTO.setCo2(measurementDO.getCo2());
         measurementDTO.setSensorName(measurementDO.getSensorName());
         measurementDTO.setMeasurementTime(measurementDO.getMeasurementTime());
+        measurementDTO.setSensorStatus(measurementDO.getSensorStatus());
         return measurementDTO;
     }
 
