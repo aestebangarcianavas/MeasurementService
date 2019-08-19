@@ -28,7 +28,8 @@ public class MeasurementServiceImpl implements MeasurementService {
     @Override
     public MeasurementDO createMeasurement(MeasurementDO measurementDO) {
         MeasurementDO measurementDOToSave = measurementDO;
-        List<MeasurementDO> previousMeasurements = measurementRepository.findAllBySensorNameAndMeasurementTimeAfter(
+        List<MeasurementDO> previousMeasurements =
+            measurementRepository.findAllBySensorNameAndMeasurementTimeAfterOrderByMeasurementTimeDesc(
                 measurementDO.getSensorName(), measurementDO.getMeasurementTime().minusMinutes(3).withNano(0));
         LOG.info("Last three measurements found : {}", previousMeasurements);
         if (previousMeasurements.isEmpty()) {

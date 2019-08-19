@@ -38,7 +38,6 @@ public class MeasurementServiceTest {
     private static final MeasurementDO measurement4 = new MeasurementDO();
     private static final MeasurementDO measurement5 = new MeasurementDO();
 
-
     public static final String SENSOR_NAME = "sensor1";
 
     static {
@@ -53,7 +52,6 @@ public class MeasurementServiceTest {
         measurement2.setCo2(2000L);
         measurement2.setSensorName(SENSOR_NAME);
         measurement2.setSensorStatus(SensorStatus.WARN);
-
 
         measurement3.setId(190000002L);
         measurement3.setMeasurementTime(LocalDateTime.now().withNano(0).minusMinutes(3));
@@ -72,7 +70,6 @@ public class MeasurementServiceTest {
         measurement5.setCo2(2200L);
         measurement5.setSensorName(SENSOR_NAME);
         measurement5.setSensorStatus(SensorStatus.ALERT);
-
     }
 
     @MockBean
@@ -83,7 +80,8 @@ public class MeasurementServiceTest {
 
     @Test
     public void shouldCreateFirstMeasurement() {
-        when(measurementRepository.findAllBySensorNameAndMeasurementTimeAfter(Mockito.anyString(), Mockito.any()))
+        when(measurementRepository.findAllBySensorNameAndMeasurementTimeAfterOrderByMeasurementTimeDesc(
+                    Mockito.anyString(), Mockito.any()))
             .thenReturn(new ArrayList<>());
         when(measurementRepository.save(Mockito.any())).thenReturn(measurement1);
         MeasurementDO measurementDO = measurementServiceToTest.createMeasurement(measurement1);
@@ -96,7 +94,8 @@ public class MeasurementServiceTest {
     public void shouldCreateMeasurementWithWarn() {
         List<MeasurementDO> measurementDOList = new ArrayList<>();
         measurementDOList.add(measurement1);
-        when(measurementRepository.findAllBySensorNameAndMeasurementTimeAfter(Mockito.anyString(), Mockito.any()))
+        when(measurementRepository.findAllBySensorNameAndMeasurementTimeAfterOrderByMeasurementTimeDesc(
+                    Mockito.anyString(), Mockito.any()))
             .thenReturn(measurementDOList);
         when(measurementRepository.save(Mockito.any())).thenReturn(measurement2);
         MeasurementDO measurementDO = measurementServiceToTest.createMeasurement(measurement2);
@@ -111,8 +110,9 @@ public class MeasurementServiceTest {
         measurementDOList.add(measurement4);
         measurementDOList.add(measurement2);
         measurementDOList.add(measurement3);
-        when(measurementRepository.findAllBySensorNameAndMeasurementTimeAfter(Mockito.anyString(), Mockito.any()))
-                .thenReturn(measurementDOList);
+        when(measurementRepository.findAllBySensorNameAndMeasurementTimeAfterOrderByMeasurementTimeDesc(
+                    Mockito.anyString(), Mockito.any()))
+            .thenReturn(measurementDOList);
         when(measurementRepository.save(Mockito.any())).thenReturn(measurement5);
         MeasurementDO measurementDO = measurementServiceToTest.createMeasurement(measurement5);
         assertThat(measurementDO).isNotNull();

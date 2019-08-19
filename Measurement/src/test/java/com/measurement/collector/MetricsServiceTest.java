@@ -24,7 +24,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,7 +77,8 @@ public class MetricsServiceTest {
         measurementDOList.add(measurement2);
         measurementDOList.add(measurement3);
         measurementDOList.add(measurement4);
-        when(measurementService.findMeasurementBySensorNameWithinPeriod(Mockito.anyString(), Mockito.any(), Mockito.any()))
+        when(measurementService.findMeasurementBySensorNameWithinPeriod(Mockito.anyString(), Mockito.any(),
+                    Mockito.any()))
             .thenReturn(measurementDOList);
         MetricsDTO metricsDTO = metricServiceToTest.getSensorMetrics(SENSOR_NAME);
         assertThat(metricsDTO).isNotNull();

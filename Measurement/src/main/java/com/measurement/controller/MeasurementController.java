@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -54,7 +53,7 @@ public class MeasurementController {
     public MeasurementDTO getMeasurement(@RequestParam(required = true) String sensor,
             @RequestParam("measurementDate")
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-                    LocalDateTime measurementDate) throws EntityNotFoundException {
+            LocalDateTime measurementDate) throws EntityNotFoundException {
         MeasurementDO measurementDO = measurementService.getMeasurement(sensor, measurementDate);
         return MeasurementMapper.createMeasurementDTOfromMeasurementDO(measurementDO);
     }

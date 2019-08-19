@@ -32,3 +32,9 @@ http://localhost:8080/v1/sensors/alerts
 * Get sensor metrics
 
 http://localhost:8080/v1/sensors/metrics?sensorName=sensor1
+
+## Running the app
+```
+mvn clean spring-boot:run
+```
+The application will be available at `localhost:8080`. The H2 In Memory is filled up with some test data provided within */resources/data.sql.

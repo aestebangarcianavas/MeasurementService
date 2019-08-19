@@ -18,7 +18,8 @@ import javax.validation.constraints.NotNull;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)public class MetricsDTO {
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class MetricsDTO {
 
     @NotNull(message = "The sensor name can not be null!")
     private String sensorName;

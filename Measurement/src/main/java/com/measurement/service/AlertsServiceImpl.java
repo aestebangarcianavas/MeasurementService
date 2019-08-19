@@ -5,15 +5,15 @@ import com.measurement.datamodel.SensorStatus;
 import com.measurement.exception.EntityNotFoundException;
 import com.measurement.mapper.MeasurementMapper;
 import com.measurement.persistence.entities.MeasurementDO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.util.List;
 
 @Service
-public class AlertsServiceImpl implements AlertService{
+public class AlertsServiceImpl implements AlertService {
 
     @Autowired
     MeasurementService measurementService;
@@ -27,5 +27,6 @@ public class AlertsServiceImpl implements AlertService{
         alertDTO.setEndPeriod(periodEnd);
         alertDTO.setAlertMeasurements(MeasurementMapper.createMeasurementDTOListfromMeasurementDOList(
                 measurementDOList));
-        return alertDTO;    }
+        return alertDTO;
+    }
 }

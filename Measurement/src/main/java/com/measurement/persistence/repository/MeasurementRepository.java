@@ -17,7 +17,8 @@ import java.util.List;
 public interface MeasurementRepository extends CrudRepository<MeasurementDO, Long> {
     List<MeasurementDO> findBySensorName(String sensorName);
     MeasurementDO findBySensorNameAndMeasurementTime(String sensorName, LocalDateTime measurementDate);
-    List<MeasurementDO> findAllBySensorNameAndMeasurementTimeAfter(String sensorName, LocalDateTime measurementDate);
+    List<MeasurementDO> findAllBySensorNameAndMeasurementTimeAfterOrderByMeasurementTimeDesc(String sensorName,
+            LocalDateTime measurementDate);
     List<MeasurementDO> findBySensorNameOrderByMeasurementTimeDesc(String sensorName);
     List<MeasurementDO> findAllBySensorNameAndMeasurementTimeBetween(String sensorName, LocalDateTime startTime,
             LocalDateTime endTime);

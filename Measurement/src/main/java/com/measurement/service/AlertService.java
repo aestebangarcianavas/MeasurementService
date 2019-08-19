@@ -4,7 +4,6 @@ import com.measurement.data.transfer.AlertDTO;
 import com.measurement.exception.EntityNotFoundException;
 
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 
 /**
  * Service to get the alerts of a sensor.

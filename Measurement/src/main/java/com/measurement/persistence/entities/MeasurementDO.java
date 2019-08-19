@@ -1,14 +1,20 @@
 package com.measurement.persistence.entities;
 
 import com.measurement.datamodel.SensorStatus;
+
 import lombok.Data;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import javax.validation.constraints.NotNull;
 
