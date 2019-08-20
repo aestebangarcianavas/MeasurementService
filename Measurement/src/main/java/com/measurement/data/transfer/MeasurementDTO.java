@@ -8,6 +8,7 @@ import com.measurement.datamodel.SensorStatus;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotNull;
@@ -21,8 +22,9 @@ import javax.validation.constraints.NotNull;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class MeasurementDTO extends Base {
+public class MeasurementDTO extends Base implements Serializable {
 
+    private static final long serialVersionUID = -5089028715662417265L;
     @NotNull(message = "The id can not be null!")
     private Long id;
     @NotNull(message = "The co2 can not be null!")

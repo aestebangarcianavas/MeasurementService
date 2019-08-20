@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotNull;
@@ -19,8 +20,9 @@ import javax.validation.constraints.NotNull;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class MetricsDTO {
+public class MetricsDTO implements Serializable {
 
+    private static final long serialVersionUID = -1206344338093337670L;
     @NotNull(message = "The sensor name can not be null!")
     private String sensorName;
     @NotNull(message = "The maximal value collected within a period of time!")

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,8 +21,9 @@ import javax.validation.constraints.NotNull;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class AlertDTO extends Base {
+public class AlertDTO extends Base implements Serializable {
 
+    private static final long serialVersionUID = -5608933299574854954L;
     @NotNull(message = "The start of the period can not be null!")
     private LocalDateTime startPeriod;
 
